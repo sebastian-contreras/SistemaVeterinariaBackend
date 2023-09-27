@@ -1,5 +1,6 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.comercio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.Personas;
 import jakarta.persistence.*;
 import lombok.*;
@@ -17,11 +18,12 @@ import java.util.List;
 public class Ventas {
     @Id
     private Integer idVentas;
-    private Date Fecha;
-    private String Servicio;
+    private Date fecha;
+    private String servicio;
 
     @ManyToOne
     @JoinColumn(name = "Encargado_DNI")
+    @JsonIgnore
     private Personas encargado;
 
     @OneToMany(mappedBy = "ventas")

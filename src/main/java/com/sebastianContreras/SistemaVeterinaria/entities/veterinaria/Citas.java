@@ -1,5 +1,6 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.veterinaria;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.Personas;
 import jakarta.persistence.*;
 import lombok.*;
@@ -15,22 +16,27 @@ import java.util.Date;
 @Table(name = "citas")
 public class Citas {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idCita;
-    private Date Fecha;
-    private String Consultorio;
-    private Float Monto;
+    private Date fecha;
+    private String consultorio;
+    private Float monto;
 
 //    Diagnostico
-    private Boolean Estado;
-    private String Titulo;
-    private String Imagenes;
-    private String Descripcion;
+    private Boolean estado;
+    private String titulo;
+    private String imagenes;
+    private String descripcion;
+
+
 
     @ManyToOne(optional = false)
-    @JoinColumn(columnDefinition = "int", name = "idMascotas")
-    private Mascotas mascota;
-
-    @ManyToOne(optional = false)
-    @JoinColumn(columnDefinition = "VARCHAR(10)", name = "Veterinario_DNI")
+    @JoinColumn(columnDefinition = "VARCHAR(10)", name = "veterinario_dni")
+//    @JsonIgnore
     private Personas veterinario;
+
+    @ManyToOne(optional = false)
+    @JoinColumn(columnDefinition = "INT", name = "id_mascotas")
+//    @JsonIgnore
+    private Mascotas mascota;
 }

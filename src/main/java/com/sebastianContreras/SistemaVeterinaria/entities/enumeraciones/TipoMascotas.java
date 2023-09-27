@@ -1,5 +1,5 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones;
 
 public enum TipoMascotas {
-    Perro, Gato, Pajaro, Pez, Hamster
+    Perro, Gato, Pajaro, Pez, Hamster, Caballo, Nutria
 }

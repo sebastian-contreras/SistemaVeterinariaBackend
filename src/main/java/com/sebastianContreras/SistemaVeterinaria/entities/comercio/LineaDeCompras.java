@@ -1,5 +1,6 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.comercio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.Insumos;
 import jakarta.persistence.*;
 import lombok.*;
@@ -19,6 +20,7 @@ public class LineaDeCompras {
 
     @ManyToOne
     @JoinColumn(name = "idCompras")
+    @JsonIgnore
     private Compras compra;
 
     @OneToOne

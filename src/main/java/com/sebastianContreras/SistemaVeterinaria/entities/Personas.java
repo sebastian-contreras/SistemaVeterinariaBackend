@@ -1,6 +1,8 @@
 package com.sebastianContreras.SistemaVeterinaria.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.comercio.Ventas;
+import com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones.Roles;
 import com.sebastianContreras.SistemaVeterinaria.entities.veterinaria.Citas;
 import com.sebastianContreras.SistemaVeterinaria.entities.veterinaria.Mascotas;
 import jakarta.persistence.*;
@@ -18,21 +20,28 @@ import java.util.List;
 public class Personas {
 
     @Id
-    private String DNI;
-    private String Nombre;
-    private String Apellido;
-    private String Telefono;
-    private String Email;
-    private String Matricula;
-    private String Direccion;
+    private String dni;
+    private String nombre;
+    private String apellido;
+    private String telefono;
+    private String email;
+    private String matricula;
+    private String direccion;
 
-    @OneToMany(mappedBy = "dueno")
+    @Column(name = "perfil_Rol",columnDefinition = "INT(1)")
+    @Enumerated(value = EnumType.ORDINAL)
+    private Roles perfilRol;
+
+    @OneToMany(mappedBy = "dueno",fetch = FetchType.LAZY)
+    @JsonIgnore
     private List<Mascotas> mascotas;
 
-    @OneToMany(mappedBy = "veterinario")
-    private List<Citas> CitasVeterinario;
+    @OneToMany(mappedBy = "veterinario",fetch = FetchType.LAZY)
+    @JsonIgnore
+    private List<Citas> citasVeterinario;
 
-    @OneToMany(mappedBy = "encargado")
+    @OneToMany(mappedBy = "encargado",fetch = FetchType.LAZY)
+    @JsonIgnore
     List<Ventas> ventasRealizadas;
 
 }

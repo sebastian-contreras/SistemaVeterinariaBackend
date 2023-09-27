@@ -15,15 +15,15 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "provedores")
+@Table(name = "proveedores")
 public class Provedores {
     @Id
-    private String CUIL;
-    private String Direccion;
-    private String Telefono;
-    private Boolean Estado;
-    private String Email;
-    private String Nombre;
+    private String cuil;
+    private String direccion;
+    private String telefono;
+    private Boolean estado;
+    private String email;
+    private String nombre;
 
 //    COMPRAS
     @OneToMany(mappedBy = "proveedor")

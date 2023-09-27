@@ -1,5 +1,6 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.comercio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.Provedores;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,10 +19,11 @@ public class Compras {
     @Id
     private Integer idCompras;
 
-    private Date Fecha;
+    private Date fecha;
 
     @ManyToOne
-    @JoinColumn(name = "Provedores_CUIL")
+    @JoinColumn(name = "proveedores_cuil")
+    @JsonIgnore
     private Provedores proveedor;
 
     @OneToMany(mappedBy = "compra")

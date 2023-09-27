@@ -4,8 +4,6 @@ import com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones.Roles;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.Set;
-
 @Setter
 @Getter
 @Builder
@@ -28,7 +26,7 @@ public class Credenciales {
     private String password;
     @Column(columnDefinition = "INT(1)")
     @Enumerated(value = EnumType.ORDINAL)
-    private Roles Rol;
+    private Roles rol;
 
 
 }

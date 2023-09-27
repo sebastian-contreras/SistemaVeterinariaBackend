@@ -1,5 +1,6 @@
 package com.sebastianContreras.SistemaVeterinaria.entities.comercio;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,5 +19,6 @@ public class LineaDeVentas {
 
     @ManyToOne
     @JoinColumn(name = "idVentas")
+    @JsonIgnore
     private Ventas ventas;
 }
