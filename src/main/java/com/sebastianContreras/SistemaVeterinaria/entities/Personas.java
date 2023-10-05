@@ -44,4 +44,10 @@ public class Personas {
     @JsonIgnore
     List<Ventas> ventasRealizadas;
 
+    @OneToOne(mappedBy = "personas", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonIgnore
+    private Credenciales credenciales;
+
+
+
 }

@@ -13,8 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-
+@CrossOrigin
 @RequestMapping("/api")
 public class PersonasController {
     @Autowired
@@ -69,7 +68,7 @@ public class PersonasController {
         return ResponseEntity.created(new URI("/api/persona/save")).build();
     }
 
-    @DeleteMapping("/api/persona/{dni}")
+    @DeleteMapping("/persona/{dni}")
     public ResponseEntity<?> delete(@PathVariable String dni){
         if(dni!=null){
             servicio.deleteByDNI(dni);

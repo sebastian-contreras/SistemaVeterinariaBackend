@@ -20,8 +20,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
-
+@CrossOrigin
 @RequestMapping("/api")
 public class CitasController {
     @Autowired
@@ -100,7 +99,7 @@ public class CitasController {
         return ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/api/citaspendiente/{id}")
+    @DeleteMapping("/citaspendiente/{id}")
     public ResponseEntity<?> delete(@PathVariable Integer id){
         if(id!=null){
             service.deleteById(id);
