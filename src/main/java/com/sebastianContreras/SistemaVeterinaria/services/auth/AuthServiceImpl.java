@@ -72,4 +72,13 @@ public class AuthServiceImpl implements AuthService {
                 .rol(user.getRol())
                 .build();
     }
+
+    @Override
+    public Boolean hasCredentials(String dni) {
+        Optional<Credenciales> cred = credencialesRepository.findById(dni);
+        if(cred.isPresent()){
+            return true;
+        }
+        return false;
+    }
 }

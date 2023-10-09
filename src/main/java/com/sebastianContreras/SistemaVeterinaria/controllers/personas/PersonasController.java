@@ -4,6 +4,9 @@ import com.sebastianContreras.SistemaVeterinaria.entities.Personas;
 import com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones.Roles;
 import com.sebastianContreras.SistemaVeterinaria.persistence.impl.PersonasDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +21,13 @@ import java.util.Optional;
 public class PersonasController {
     @Autowired
     private PersonasDAO servicio;
+    @GetMapping(value = "/clientes",params = {"page"})
+    public ResponseEntity<?> findClientes( @RequestParam(defaultValue = "0") int page,
+                                           @RequestParam(defaultValue = "10") int size){
+        Pageable pageable = PageRequest.of(page, size);
+        List<Personas> personas = servicio.todosClientes(pageable);
+        return ResponseEntity.ok(personas);
+    }
     @GetMapping("/clientes")
     public ResponseEntity<?> findClientes(){
         List<Personas> listaPersonas = servicio.todosClientes();

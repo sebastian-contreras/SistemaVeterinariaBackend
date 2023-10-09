@@ -5,6 +5,8 @@ import com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones.Roles;
 import com.sebastianContreras.SistemaVeterinaria.persistence.IPersonasDAO;
 import com.sebastianContreras.SistemaVeterinaria.repositories.PersonasRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,6 +21,12 @@ public class PersonasDAO implements IPersonasDAO {
     public List<Personas> todasPersonas() {
         return (List<Personas>) repositorio.findAll();
     }
+
+    @Override
+        public List<Personas> todosClientes(Pageable pageable) {
+        return repositorio.findByPerfilRol(Roles.USUARIO,pageable);
+    }
+
     @Override
     public List<Personas> todosClientes() {
         return repositorio.findByPerfilRol(Roles.USUARIO);

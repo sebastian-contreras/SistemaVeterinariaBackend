@@ -7,6 +7,8 @@ import com.sebastianContreras.SistemaVeterinaria.entities.veterinaria.Mascotas;
 import com.sebastianContreras.SistemaVeterinaria.persistence.IPersonasDAO;
 import com.sebastianContreras.SistemaVeterinaria.persistence.veterinaria.IMascotasDAO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,6 +25,14 @@ public class MascotasController {
     private IMascotasDAO servicio;
     @Autowired
     private IPersonasDAO servicioPersonas;
+    @GetMapping(value ="/mascotas",params = {"page"})
+    public ResponseEntity<?> todasMascotasPage( @RequestParam(defaultValue = "0") int page,
+                                                @RequestParam(defaultValue = "10") int size){
+        Pageable pageable = PageRequest.of(page, size);
+
+        List<Mascotas> mascotas = servicio.todasMascotas(pageable);
+        return ResponseEntity.ok(mascotas);
+    }
     @GetMapping("/mascotas")
     public ResponseEntity<?> todasMascotas(){
         List<Mascotas> mascotas = servicio.todasMascotas();

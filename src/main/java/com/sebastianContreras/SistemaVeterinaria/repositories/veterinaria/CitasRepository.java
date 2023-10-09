@@ -23,4 +23,8 @@ public interface CitasRepository extends CrudRepository<Citas,Integer> {
             "personas as p JOIN mascotas as m ON p.dni = m.dueno_dni\n" +
             "JOIN citas as c ON c.id_mascotas=m.id_mascotas where p.dni=?1 AND c.estado=0",nativeQuery = true)
     List<Citas> findCitasByClientePendiente(String dni);
+
+
+
+
 }
