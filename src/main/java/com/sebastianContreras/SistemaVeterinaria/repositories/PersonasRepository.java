@@ -29,6 +29,11 @@ public interface PersonasRepository extends CrudRepository<Personas,String>, Pag
     @Query(value = "select veterinario_dni,nombre,apellido, citas,total from MontoVetMes WHERE veterinario_dni=?1",nativeQuery = true)
     Map<String, Object> MontoVetMes(String dni);
 
+    @Query(value = "select sum(citas) as 'citas',sum(total) as 'total' from MontoVetTotales",nativeQuery = true)
+    Map<String, Object> MontoTotales();
+    @Query(value = "select sum(citas) as 'citas',sum(total) as 'total' from MontoVetMes",nativeQuery = true)
+    Map<String, Object> MontoTotalesMes();
+
     @Query(value = "select dni,nombre,apellido,cantidad,monto from TopVeterinarios",nativeQuery = true)
     List<Map<String, Object>> TopVeterinarios();
 

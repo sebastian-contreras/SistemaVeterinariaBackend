@@ -28,7 +28,14 @@ public class EstadisticaController {
         combinedData.put("citasTipoMascotas", CitasTipoMascotas);
         return ResponseEntity.ok(combinedData);
     }
+    @GetMapping("/ganancia")
+    public ResponseEntity<?> MontoTotales(){
+        Map<String, Object> combinedData = new HashMap<>();
+        combinedData.put("GananciaAnuales", estadisticaDAO.MontoTotales());
+        combinedData.put("GananciaMensuales", estadisticaDAO.MontoTotalesMes());
 
+        return ResponseEntity.ok(combinedData);
+    }
     @GetMapping("/gananciavet")
     public ResponseEntity<?> MontoVetTotales(){
         Map<String, Object> combinedData = new HashMap<>();

@@ -2,6 +2,7 @@ package com.sebastianContreras.SistemaVeterinaria.entities.comercio;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.sebastianContreras.SistemaVeterinaria.entities.Personas;
+import com.sebastianContreras.SistemaVeterinaria.entities.enumeraciones.ServiciosVenta;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,7 +20,10 @@ public class Ventas {
     @Id
     private Integer idVentas;
     private Date fecha;
-    private String servicio;
+
+    @Column(name = "servicio",columnDefinition = "INT(1)")
+    @Enumerated(value = EnumType.ORDINAL)
+    private ServiciosVenta servicio;
 
     @ManyToOne
     @JoinColumn(name = "Encargado_DNI")

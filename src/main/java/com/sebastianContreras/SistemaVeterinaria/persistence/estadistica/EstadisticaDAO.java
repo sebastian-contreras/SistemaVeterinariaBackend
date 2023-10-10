@@ -40,6 +40,13 @@ public class EstadisticaDAO {
     public Map<String, Object> MontoVetMes(String dni){
         return personasRepository.MontoVetMes(dni);
     }
+
+    public Map<String, Object> MontoTotales(){
+        return personasRepository.MontoTotales();
+    }
+    public Map<String, Object> MontoTotalesMes(){
+        return personasRepository.MontoTotalesMes();
+    }
     public List<Map<String, Object>> TopVeterinarios(){
         return personasRepository.TopVeterinarios();
     }
